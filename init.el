@@ -18,7 +18,12 @@
   (package-refresh-contents)
   (package-install 'dash))
 
-;; default package
+;; install use-packages
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; package-kit
 (require 'setup-packages)
 
 ;; install packages
@@ -51,8 +56,23 @@
      inflections
      magit
      markdown-mode
+     lsp-mode
+     yasnippet
+     lsp-treemacs
+     helm-lsp
+     projectile
+     hydra
+     flycheck
+     company
+     avy
+     which-key
+     helm-xref
+     dap-mode
      )))
+
 (install-packages)
+;; setup lsp mode
+(require 'setup-lsp)
 ;; do not have backup file at all
 (setq make-backup-files nil)
 
@@ -70,7 +90,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(wheatgrass))
  '(package-selected-packages
-   '(html-to-hiccup htmlize highlight-escape-sequences go-mode gist forge exec-path-from-shell eproject elisp-slime-nav edn elm-mode editorconfig dockerfile-mode diminish diff-hl deadgrep css-eldoc company clojure-mode-extra-font-locking clj-refactor neotree cider magit use-package evil)))
+   '(lsp-mode which-key-mode flycheck html-to-hiccup htmlize highlight-escape-sequences go-mode gist forge exec-path-from-shell eproject elisp-slime-nav edn elm-mode editorconfig dockerfile-mode diminish diff-hl deadgrep css-eldoc company clojure-mode-extra-font-locking clj-refactor neotree cider magit use-package evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
